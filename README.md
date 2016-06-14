@@ -203,8 +203,8 @@ relative to `package.json` and reserve other prefixes for future usage.
 ## Implementation
 
 To improve performance, host environments may want to specify a goal to parse
-first. This could take several forms: a command line flag, a manifest file,
-HTTP header, file extension, etc.
+first. This could take several forms:<br>
+a command line flag, a manifest file, HTTP header, file extension, etc.
 
 The recommendation for Node is that we store this in a cache on disk.
 [@trevnorris](https://github.com/trevnorris) and [@indutny](https://github.com/indutny)
