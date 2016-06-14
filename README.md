@@ -248,3 +248,10 @@ about the grammar for a blob via means listed in [Implementation](#implementatio
    goals. At the moment there's no way to detect the intended goal of JavaScript
    files so bytecode caches are generated for the Script goal and discarded if
    ES modules are encountered.
+
+## Special Thanks
+
+Note from [@jdalton](https://github.com/jdalton):<br>
+This proposal would not have been possible without the tireless effort, conviction,
+and collaboration of [@bmeck](https://github.com/bmeck), [@dherman](https://github.com/dherman),
+and [@wycats](https://github.com/wycats). Thank you!
