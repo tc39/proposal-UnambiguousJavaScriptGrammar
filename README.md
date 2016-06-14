@@ -149,7 +149,7 @@ Node needs a way for people to ship both CJS and ES modules in a single package.
 Adopt the idea of `"modules.root"` from [Defense of
 .js](https://github.com/dherman/defense-of-dot-js), name pending upon some
 investigation. This would be introduced at the same time as ES modules. Any
-node version that supports this field would change the path resolution upon
+Node version that supports this field would change the path resolution upon
 packages to resolve relative to the path defined in this field.
 
 ### Example
@@ -175,8 +175,8 @@ And package.json containing:
 
 ```js
 require('myapp');
-// dist/app.js if node supports ES
-// app.js if node supports CJS
+// dist/app.js if Node supports ES
+// app.js if Node supports CJS
 ```
 
 ### Side effects
@@ -188,8 +188,8 @@ In the above example scenarios:
 
 ```js
 require('myapp/package.json');
-// error if node supports the field
-// package.json if node is older than the field
+// error if Node supports the field
+// package.json if Node is older than the field
 ```
 
 This has been discussed in several  places, such as people using `react`
