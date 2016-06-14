@@ -15,8 +15,9 @@
 * Change JS grammars for Script and Module to be unambiguous / have no collisions
 * Determine grammar for any `.js` file by parsing as one grammar, if that fails
   parse as the other
-* Introduce a field to `package.json` mimicing the behavior of `modules.root` /
-  Document Base URI to provide second entry point for Node versions that support
+* Introduce a field to `package.json` mimicing
+  [`modules.root`](https://github.com/dherman/defense-of-dot-js/blob/master/proposal.md#transitioning-applications-and-large-packages) /
+  Document Base URI to provide a second entry point for Node versions that support
   ES modules
 * Fat packages *(packages that ship both CJS and ES codebases [name from
   [Fat Binary](https://en.wikipedia.org/wiki/Fat_binary)])* can keep current
