@@ -117,11 +117,10 @@ this value in format | n/a | undefined
 Node currently requires a means for programmers to signal what goal their code
 is written to run in.
 
-After much research, the only solution is a fairly hefty amount of ecosystem
-damage from either a file extension, or package.json approach. Neither of which
-define the intent of the source text in a way from the ECMA262 standard, and
-neither of which allow programmers to enforce their intent at a source text
-level like `"use strict"`.
+After much research, leading solutions have either hefty ecosystem tolls or
+developer ceremony. They lack a way to define the intent of the source text from
+the ECMA262 standard, or allow programmers to enforce their intent at a source
+text level, like `"use strict"`.
 
 ## Solution
 
