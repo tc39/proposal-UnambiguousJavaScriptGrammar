@@ -171,34 +171,28 @@ And package.json containing:
 ```json
 {
   "modules.root": "./dist",
-   "main": "app.js"
+  "main": "app.js"
 }
 ```
 
 ```js
 require('myapp');
-// dist/app.js if Node supports ES
-// app.js if Node supports CJS
+// Load dist/app.js if Node supports ES modules
+// Load app.js if Node supports only CJS
 ```
 
-### Side effects
+### Side effects of field
 
-This has a side effect as well, that packages would be able to limit the
-visible API of themselves via this field.
-
-In the above example scenarios:
+In the above example scenario:
 
 ```js
 require('myapp/package.json');
-// error if Node supports the field
-// package.json if Node is older than the field
+// Fail to load if Node supports ES modules
+// Load package.json if Node supports only CJS
 ```
 
-This has been discussed in several  places, such as people using `react`
-relying upon internal APIs that are not to be used by package consumers.
-
-This allows exposing a limited API for a package and having 2 distinct entry
-points for Module and Script.
+This has the benefit of allowing packages, like `react`, to access internal
+modules without exposing them to package consumers.
 
 ### Validation of field
 
