@@ -7,7 +7,9 @@
 
 ## TL;DR
 
-* CJS and ES modules just work without juggling extensions or managing metadata.
+* CJS and ES modules just work without users juggling extensions or managing metadata.
+* Performance generally is on par or better than existing CJS
+* Performance is significantly improvemented for ES modules over existing transpilation workflows
 * Change JS grammars for Script and Module to be unambiguous / have no
 collisions.
 * Determine grammar for any `.js` file by parsing as one grammar, if that fails
