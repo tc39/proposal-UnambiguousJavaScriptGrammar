@@ -27,7 +27,7 @@
 
 The Script and Module goal of ECMA262 have a grammatical ambiguity where some
 code can run in both goals, having the exact same source, but produce different
-values. Unlike `"use strict"` the signal to have a specific behavior is not in
+values. Unlike `"use strict"`, the signal to have a specific behavior is not in
 the code, thus the code has a multitude of possible effects which are not
 controlled by the programmer.
 
