@@ -1,4 +1,4 @@
-mbiguous JavaScript Grammar
+# Unambiguous JavaScript Grammar
 
 | Status | DRAFT |
 | --- | --- |
