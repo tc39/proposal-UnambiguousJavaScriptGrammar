@@ -207,12 +207,12 @@ first. This could take several forms:<br>
 a command line flag, a manifest file, HTTP header, file extension, etc.
 
 The recommendation for Node is that we store this in a cache on disk.
-[@trevnorris](https://github.com/trevnorris) and [@indutny](https://github.com/indutny)
-have expressed that this should work.
 
-Caching removes the sting of parsing and can actually improve performance through
-things like bytecode caching. While investigations are in their early stages,
-there appears to be plenty of room for further improvements and optimizations.
+Both [@trevnorris](https://github.com/trevnorris) and [@indutny](https://github.com/indutny)
+believe caching is doable. Caching removes the sting of parsing and can actually
+improve performance through techniques like bytecode caching. While investigations
+are in their early stages, there appears to be plenty of room for further
+improvements and optimizations.
 
 The workflow for loading files would look like:
 
