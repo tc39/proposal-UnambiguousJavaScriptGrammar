@@ -8,23 +8,23 @@ mbiguous JavaScript Grammar
 ## TL;DR
 
 * CJS and ES modules just work without juggling extensions or managing metadata.
-* Change JS grammars for Script and Module to be unambiguous / have no 
+* Change JS grammars for Script and Module to be unambiguous / have no
 collisions.
-* Determine grammar for any `.js` file by parsing as one grammar, if that fails 
+* Determine grammar for any `.js` file by parsing as one grammar, if that fails
 parse as the other.
-* Introduce a field to `package.json` mimicing the behavior of `modules.root` / 
-Document Base URI to provide second entry point for Node versions that support 
+* Introduce a field to `package.json` mimicing the behavior of `modules.root` /
+Document Base URI to provide second entry point for Node versions that support
 ES modules.
-  * Fat packages (packages that ship both CJS and ES codebases [name from [Fat 
-Binary](https://en.wikipedia.org/wiki/Fat_binary)]) can keep current structure 
+* Fat packages (packages that ship both CJS and ES codebases [name from [Fat
+Binary](https://en.wikipedia.org/wiki/Fat_binary)]) can keep current structure
 for legacy support and use `modules.root` to ship support for newer versions.
 
 ## Problem
 
-The Script and Module goal of ECMA262 have a grammatical ambiguity where some 
-code can run in both goals, having the exact same source, but produce different 
-values. Unlike `"use strict"` the signal to have a specific behavior is not in 
-the code, thus the code has a multitude of possible effects which are not 
+The Script and Module goal of ECMA262 have a grammatical ambiguity where some
+code can run in both goals, having the exact same source, but produce different
+values. Unlike `"use strict"` the signal to have a specific behavior is not in
+the code, thus the code has a multitude of possible effects which are not
 controlled by the programmer.
 
 ### Example
@@ -49,21 +49,21 @@ arguments $formatter recieves | modified | unmodified
 format | runs | throws
 this value in format | global | `undefined`
 
-Since there is no way in source text to enforce the goal with the current 
-grammar; this leads to certain constructs being undefined behavior to the 
-programmer, and defined by the host environment. In turn, existing code could 
-be run in the wrong goal and partially function, or function without errors but 
+Since there is no way in source text to enforce the goal with the current
+grammar; this leads to certain constructs being undefined behavior to the
+programmer, and defined by the host environment. In turn, existing code could
+be run in the wrong goal and partially function, or function without errors but
 produce incorrect values.
 
 
 ## ECMA262 Solution
 
-Require a structure in the Module goal that does not parse in the Script goal. 
-Having this requirement would prevent any source text written for the Module 
-goal from being executed in the Script goal by removing the ambiguity at parse 
+Require a structure in the Module goal that does not parse in the Script goal.
+Having this requirement would prevent any source text written for the Module
+goal from being executed in the Script goal by removing the ambiguity at parse
 time.
 
-The proposal is to require that Module source text has at least one `import` or 
+The proposal is to require that Module source text has at least one `import` or
 `export` statement in the source text to parse.
 
 ### Script Example
@@ -109,25 +109,25 @@ this value in format | n/a | undefined
 
 ## Problem
 
-Node currently requires a means for programmers to signal what goal their code 
+Node currently requires a means for programmers to signal what goal their code
 is written to run in.
 
-After much research, the only solution is a fairly hefty amount of ecosystem 
-damage from either a file extension, or package.json approach. Neither of which 
-define the intent of the source text in a way from the ECMA262 standard, and 
-neither of which allow programmers to enforce their intent at a source text 
+After much research, the only solution is a fairly hefty amount of ecosystem
+damage from either a file extension, or package.json approach. Neither of which
+define the intent of the source text in a way from the ECMA262 standard, and
+neither of which allow programmers to enforce their intent at a source text
 level like `"use strict"`.
 
 ## Solution
 
-Parse source text as either goal, and if there is a parse error that may allow 
-the other goal to parse the source text parse as the other goal. After this, 
-the goal is known unambiguously and the environment can safely perform 
+Parse source text as either goal, and if there is a parse error that may allow
+the other goal to parse the source text parse as the other goal. After this,
+the goal is known unambiguously and the environment can safely perform
 initialization without fear of source text being run in the wrong goal.
 
 ### Algorithm
 
-Note: A host can choose either goal to parse as first, so feel free to swap the 
+Note: A host can choose either goal to parse as first, so feel free to swap the
 order of Script and Module here.
 
 1. Bootstrap for Script
@@ -144,10 +144,10 @@ Node needs a way for people to ship both CJS and ES modules in a single package.
 
 ## Solution
 
-Adopt the idea of `"modules.root"` from [Defense of 
-.js](https://github.com/dherman/defense-of-dot-js), name pending upon some 
-investigation. This would be introduced at the same time as ES modules. Any 
-node version that supports this field would change the path resolution upon 
+Adopt the idea of `"modules.root"` from [Defense of
+.js](https://github.com/dherman/defense-of-dot-js), name pending upon some
+investigation. This would be introduced at the same time as ES modules. Any
+node version that supports this field would change the path resolution upon
 packages to resolve relative to the path defined in this field.
 
 ### Example
@@ -179,7 +179,7 @@ require('myapp');
 
 ### Side effects
 
-This has a side effect as well, that packages would be able to limit the 
+This has a side effect as well, that packages would be able to limit the
 visible API of themselves via this field.
 
 In the above example scenarios:
@@ -190,26 +190,26 @@ require('myapp/package.json');
 // package.json if node is older than the field
 ```
 
-This has been discussed in several  places, such as people using `react` 
+This has been discussed in several  places, such as people using `react`
 relying upon internal APIs that are not to be used by package consumers.
 
-This allows exposing a limited API for a package and having 2 distinct entry 
+This allows exposing a limited API for a package and having 2 distinct entry
 points for Module and Script.
 
 ### Validation of field
 
-The field must not be the values `node_modules`, or `./node_modules`; nor may 
-the field begin with `node_modules/`, `./node_modules/`, `../`, or `/` 
-otherwise it will throw. This is to explicitly show the intent of the field 
+The field must not be the values `node_modules`, or `./node_modules`; nor may
+the field begin with `node_modules/`, `./node_modules/`, `../`, or `/`
+otherwise it will throw. This is to explicitly show the intent of the field
 relative to `package.json` and reserve other prefixes for future usage.
 
 ## Implementation
 
-To speed up things, most host environments want to be able to accept a goal to 
-parse as first in some way. This could take several forms: a command line flag, 
+To speed up things, most host environments want to be able to accept a goal to
+parse as first in some way. This could take several forms: a command line flag,
 a manifest file, HTTP header, file extension, etc.
 
-The recommendation for Node is that we store this in a cache on disk somewhere. 
+The recommendation for Node is that we store this in a cache on disk somewhere.
 @trevnorris and @indutny have given thoughts that this should work.
 
 The workflow for loading any file would come out like this:
@@ -236,7 +236,6 @@ The workflow for loading any file would come out like this:
 
 ## Tooling concerns
 
-Some situations outside of Node do not have a JS parser (Bash programs, some 
-asset pipelines, etc.). These tools generally operate on files as opaque blobs, 
+Some situations outside of Node do not have a JS parser (Bash programs, some
+asset pipelines, etc.). These tools generally operate on files as opaque blobs,
 or plain text files. These tools can use
-
