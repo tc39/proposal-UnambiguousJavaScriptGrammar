@@ -116,9 +116,9 @@ this value in format | n/a | undefined
 Node currently requires a means for programmers to signal what goal their code
 is written to run in.
 
-After much research, leading solutions have either hefty ecosystem tolls or
-developer ceremony. They lack a way to define the intent of the source text from
-the ECMA262 standard, or allow programmers to enforce their intent at a source
+After much research, leading solutions have either hefty ecosystem tolls,
+ceremony, or scaffolding. They lack a way to define the intent of the source text
+from the ECMA262 standard, or allow programmers to enforce their intent at a source
 text level, like `"use strict"`.
 
 ## Solution
