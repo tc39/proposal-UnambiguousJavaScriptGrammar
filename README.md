@@ -7,6 +7,7 @@ mbiguous JavaScript Grammar
 
 ## TL;DR
 
+* CJS and ES modules just work without juggling extensions or managing metadata.
 * Change JS grammars for Script and Module to be unambiguous / have no 
 collisions.
 * Determine grammar for any `.js` file by parsing as one grammar, if that fails 
