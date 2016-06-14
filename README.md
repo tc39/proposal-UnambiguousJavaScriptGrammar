@@ -2,8 +2,7 @@ mbiguous JavaScript Grammar
 
 | Status | DRAFT |
 | --- | --- |
-| Authors | [@jdalton](https://github.com/jdalton) 
-[@bmeck](https://github.com/bmeck) |
+| Authors | [@jdalton](https://github.com/jdalton)  [@bmeck](https://github.com/bmeck) |
 | Date | June 14, 2016 |
 
 ## TL;DR
