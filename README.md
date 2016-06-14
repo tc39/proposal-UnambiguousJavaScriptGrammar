@@ -34,24 +34,22 @@ controlled by the programmer.
 ### Example
 
 ```js
-function format(fmt, /*args, */ cb) {
-  fmt = fmt || '';
-  arguments = [].slice.call(arguments);
-  var cb = arguments.pop();
-  $formatter.apply(this, arguments);
-  cb();
+function foo(value) {
+  value = value || '';
+  var args = [].slice.call(arguments);
+  args.unshift(this);
+  return args;
 }
-format();
+foo(null);
 ```
 
 Differences:
 
  | script | module
 --- | --- | --- | ---
-variable scope holding format | global | local
-arguments $formatter recieves | modified | unmodified
-format | runs | throws
-this value in format | global | `undefined`
+variable scope of `foo` | global | local
+`arguments` object | modified | unmodified
+`this` binding of `foo` | global | `undefined`
 
 Since there is no way in source text to enforce the goal with the current
 grammar; this leads to certain constructs being undefined behavior to the
@@ -73,43 +71,39 @@ The proposal is to require that Module source text has at least one `import` or
 ### Script Example
 
 ```js
-function format(fmt, /*args, */ cb) {
-  fmt = fmt || '';
-  arguments = [].slice.call(arguments);
-  var cb = arguments.pop();
-  $formatter.apply(this, arguments);
-  cb();
+function foo(value) {
+  value = value || '';
+  var args = [].slice.call(arguments);
+  args.unshift(this);
+  return args;
 }
-format();
+foo(null);
 ```
 
  | script | module (cannot parse)
 --- | --- | --- | ---
-variable scope holding format | global | n/a
-arguments $formatter recieves | modified | n/a
-format | runs | n/a
-this value in format | global | n/a
+variable scope of `foo` | global | n/a
+`arguments` object | modified | n/a
+`this` binding of `foo` | global | n/a
 
 ### Module Example
 
 ```js
-function format(fmt, /*args, */ cb) {
-  fmt = fmt || '';
-  arguments = [].slice.call(arguments);
-  var cb = arguments.pop();
-  $formatter.apply(this, arguments);
-  cb();
+function foo(value) {
+  value = value || '';
+  var args = [].slice.call(arguments);
+  args.unshift(this);
+  return args;
 }
-format();
-export default undefined;
+foo(null);
+export default null;
 ```
 
  | script (cannot parse) | module
 --- | --- | --- | ---
-variable scope holding format | n/a | local
-arguments $formatter recieves | n/a | unmodified
-format | n/a | throws
-this value in format | n/a | undefined
+variable scope of `foo` | n/a | local
+`arguments` object | n/a | unmodified
+`this` binding of `foo` | n/a | undefined
 
 ## Problem
 
