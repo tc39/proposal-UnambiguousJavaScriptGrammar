@@ -209,6 +209,10 @@ HTTP header, file extension, etc.
 The recommendation for Node is that we store this in a cache on disk.
 @trevnorris and @indutny have given thoughts that this should work.
 
+Caching removes the sting of parsing and can actually improve performance through
+things like bytecode caching. While investigations are in their early stages,
+there appears to be plenty of room for further improvements and optimizations.
+
 The workflow for loading files would look like:
 
 1. Get path to load as `filename`
@@ -237,3 +241,5 @@ Some situations outside of Node do not have a JS parser (Bash programs, some
 asset pipelines, etc.). These tools generally operate on files as opaque blobs,
 or plain text files. These tools can use the noted methods to get information
 about the grammar for a blob via means listed in [Implementation](#implementation).
+
+## External Impact
