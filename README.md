@@ -7,19 +7,21 @@
 
 ## TL;DR
 
-* CJS and ES modules just work without users juggling extensions or managing metadata.
-* Performance generally is on par or better than existing CJS
-* Performance is significantly improvemented for ES modules over existing transpilation workflows
-* Change JS grammars for Script and Module to be unambiguous / have no
-collisions.
+* CJS and ES modules **just work** without users juggling extensions or managing
+  metadata
+* Performance is generally on par or better than existing CJS
+* Performance is significantly improvemented for ES modules over transpilation
+  workflows
+* Change JS grammars for Script and Module to be unambiguous / have no collisions
 * Determine grammar for any `.js` file by parsing as one grammar, if that fails
-parse as the other.
+  parse as the other
 * Introduce a field to `package.json` mimicing the behavior of `modules.root` /
-Document Base URI to provide second entry point for Node versions that support
-ES modules.
-* Fat packages (packages that ship both CJS and ES codebases [name from [Fat
-Binary](https://en.wikipedia.org/wiki/Fat_binary)]) can keep current structure
-for legacy support and use `modules.root` to ship support for newer versions.
+  Document Base URI to provide second entry point for Node versions that support
+  ES modules
+* Fat packages *(packages that ship both CJS and ES codebases [name from
+  [Fat Binary](https://en.wikipedia.org/wiki/Fat_binary)])* can keep current
+  structure for legacy support and use `modules.root` to ship support for newer
+  versions
 
 ## Problem
 
