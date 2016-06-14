@@ -207,9 +207,9 @@ relative to `package.json` and reserve other prefixes for future usage.
 
 ## Implementation
 
-To speed up things, most host environments want to be able to accept a goal to
-parse as first in some way. This could take several forms: a command line flag,
-a manifest file, HTTP header, file extension, etc.
+To improve performance, host environments may want to specify a goal to parse
+first. This could take several forms: a command line flag, a manifest file,
+HTTP header, file extension, etc.
 
 The recommendation for Node is that we store this in a cache on disk somewhere.
 @trevnorris and @indutny have given thoughts that this should work.
