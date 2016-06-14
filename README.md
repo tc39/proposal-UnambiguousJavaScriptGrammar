@@ -206,10 +206,10 @@ To improve performance, host environments may want to specify a goal to parse
 first. This could take several forms: a command line flag, a manifest file,
 HTTP header, file extension, etc.
 
-The recommendation for Node is that we store this in a cache on disk somewhere.
+The recommendation for Node is that we store this in a cache on disk.
 @trevnorris and @indutny have given thoughts that this should work.
 
-The workflow for loading any file would come out like this:
+The workflow for loading files would look like:
 
 1. Get path to load as `filename`
 2. If cache has `filename` set `goal` from cached value
