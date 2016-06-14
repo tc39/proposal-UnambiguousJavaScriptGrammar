@@ -243,3 +243,8 @@ or plain text files. These tools can use the noted methods to get information
 about the grammar for a blob via means listed in [Implementation](#implementation).
 
 ## External Impact
+
+ * Microsoft packaged web apps can benefit from unambiguous Script and Module
+   goals. At the moment there's no way to detect the intended goal of JavaScript
+   files so bytecode caches are generated for the Script goal and discarded if
+   ES modules are encountered.
