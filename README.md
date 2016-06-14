@@ -148,11 +148,11 @@ Node needs a way for people to ship both CJS and ES modules in a single package.
 
 ## Solution
 
-Adopt the idea of `"modules.root"` from [Defense of
-.js](https://github.com/dherman/defense-of-dot-js), name pending upon some
-investigation. This would be introduced at the same time as ES modules. Any
-Node version that supports this field would change the path resolution upon
-packages to resolve relative to the path defined in this field.
+Adopt the idea of `"modules.root"` from
+[Defense of .js](https://github.com/dherman/defense-of-dot-js)
+*(name pending investigation)*. This would be introduced at the same time as ES
+modules. Any Node version that supports this field would change the path resolution
+upon packages to resolve relative to the path defined in this field.
 
 ### Example
 
