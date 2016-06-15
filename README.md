@@ -201,8 +201,8 @@ relative to `package.json` and reserve other prefixes for future usage.
 import 'foo/../..';
 // path normalizes to 'foo/../..'
 //
-// this would resolve the directory containing foo
-// however, the '../' means package.json is not used
+// this would resolve the directory containing the path of foo *without*
+// realpathing. however, the '../' means package.json is not used
 //
 // this would grab the package with foo in node_modules/foo
 ```
