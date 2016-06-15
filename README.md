@@ -298,4 +298,4 @@ I am also grateful for the feedback from:<br>
  * [@travisleithead](https://github.com/travisleithead) (Microsoft Edge / W3C)
 
 Thank you! :heart:<br>
-  Ñ [@jdalton](https://github.com/jdalton)
+  &#8212; [@jdalton](https://github.com/jdalton)
