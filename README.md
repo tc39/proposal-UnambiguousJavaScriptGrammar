@@ -155,7 +155,7 @@ myapp
 \ app.js # CJS
 ```
 
-And package.json containing:
+And `package.json` containing:
 
 ```json
 {
