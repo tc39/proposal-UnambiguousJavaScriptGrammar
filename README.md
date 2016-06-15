@@ -280,7 +280,22 @@ about the grammar for a blob via means listed in [Implementation](#implementatio
 
 ## Special Thanks
 
-Note from [@jdalton](https://github.com/jdalton):<br>
 This proposal would not have been possible without the tireless effort, conviction,
-and collaboration of [@bmeck](https://github.com/bmeck), [@dherman](https://github.com/dherman),
-and [@wycats](https://github.com/wycats). Thank you!
+and collaboration of<br>
+[@bmeck](https://github.com/bmeck), [@dherman](https://github.com/dherman),
+and [@wycats](https://github.com/wycats).
+
+I am also grateful for the feedback from:<br>
+ * [@AtOMiCNebula](https://github.com/AtOMiCNebula) (Microsoft Edge)
+ * [@brendaneich](https://github.com/brendaneich) (TC39)
+ * [@bterlson](https://github.com/bterlson) (TC39)
+ * [@hzoo](https://github.com/hzoo) (Babel)
+ * [@josh](https://github.com/josh) (Github / Sprockets)
+ * [@leobalter](https://github.com/leobalter) (TC39)
+ * [@ljharb](https://github.com/ljharb) (TC39)
+ * [@loganfsmyth](https://github.com/loganfsmyth) (Babel)
+ * [@sheerun](https://github.com/sheerun) (Bower)
+ * [@travisleithead](https://github.com/travisleithead) (Microsoft Edge / W3C)
+
+Thank you! :heart:<br>
+  Ñ [@jdalton](https://github.com/jdalton)
