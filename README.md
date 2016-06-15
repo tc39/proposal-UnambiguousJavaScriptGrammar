@@ -274,7 +274,7 @@ about the grammar for a blob via means listed in [Implementation](#implementatio
 ## External Impact
 
  * Microsoft packaged web apps can benefit from unambiguous Script and Module
-   goals. At the moment there's no way to detect the intended goal of JavaScript
+   goals. At the moment there is no way to detect the intended goal of JavaScript
    files so bytecode caches are generated for the Script goal and discarded if
    ES modules are encountered.
 
