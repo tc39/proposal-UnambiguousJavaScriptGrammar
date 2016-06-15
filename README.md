@@ -200,32 +200,32 @@ relative to `package.json` and reserve other prefixes for future usage.
 
 ```js
 import 'foo/../..';
-// path normalizes to 'foo/../..'
+// Path normalizes to 'foo/../..'.
 //
-// this would resolve the directory containing the path of foo *without*
-// realpathing. however, the '../' means package.json is not used
+// This would resolve the directory containing the path of `foo` *without*
+// realpathing. However, the '../' means `package.json` is not used.
 //
-// this would grab the package with foo in node_modules/foo
+// Given `abc/node_modules/foo` then `import 'foo/../..';` would get `abc`.
 ```
 
 ```js
 import 'foo/node_modules/bar/baz/..';
-// normalizes to 'foo/node_modules/bar'
-// approximately ~= path.resolve(
-//    './node_modules/foo',
-//    foo['modules.root'],
-//    'node_modules/bar'
+// Normalizes to 'foo/node_modules/bar'
+// Approximately ~= path.resolve(
+//   './node_modules/foo',
+//   foo['modules.root'],
+//   'node_modules/bar'
 // );
 //
-// this would use foo/package.json + modules.root
-// this would use bar/package.json + modules.root
+// This would use `foo/package.json` + `modules.root`.
+// This would use `bar/package.json` + `modules.root`.
 ```
 
 ```js
 import 'foo/node_modules/bar/node_modules/baz';
-// this would use foo/package.json + modules.root
-// this would not use bar/package.json , so no modules.root
-// this would use baz.package.json + modules.root
+// This would use `foo/package.json` + `modules.root`.
+// This would not use `bar/package.json`, so no `modules.root`.
+// This would use `baz.package.json` + `modules.root`.
 ```
 
 ## Implementation
