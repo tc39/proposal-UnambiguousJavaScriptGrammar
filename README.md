@@ -110,9 +110,9 @@ from the ECMA262 standard.
 ## Solution
 
 Parse source text as either goal, and if there is a parse error that may allow
-the other goal to parse the source text, then parse as the other goal. After this,
-the goal is known unambiguously and the environment can safely perform initialization
-without the possibility of the source text being run in the wrong goal.
+the other goal to parse, then parse as the other goal. After this, the goal is
+known unambiguously and the environment can safely perform initialization without
+the possibility of the source text being run in the wrong goal.
 
 ### Algorithm
 
