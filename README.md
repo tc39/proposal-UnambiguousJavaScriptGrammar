@@ -9,7 +9,7 @@
 
 * CJS and ES modules **just work** without new extensions, extra ceremony, or
   additional scaffolding
-* Performance is generally on par or better than existing CJS loading
+* Performance is generally on par or better than existing CJS module loading
 * Performance is significantly improved for ES modules over transpilation workflows
 * Change JS grammars for Script and Module to be unambiguous / have no collisions
 * Determine grammar for any `.js` file by parsing as one grammar, if that fails
@@ -168,7 +168,7 @@ And `package.json` containing:
 ```js
 require('myapp');
 // Load dist/app.js if Node supports ES modules
-// Load app.js if Node supports only CJS
+// Load app.js if Node supports only CJS modules
 ```
 
 ### Side effects of field
@@ -178,7 +178,7 @@ In the above example scenario:
 ```js
 require('myapp/package.json');
 // Fail to load if Node supports ES modules
-// Load package.json if Node supports only CJS
+// Load package.json if Node supports only CJS modules
 ```
 
 This has the benefit of allowing packages, like `react`, to access internal
