@@ -201,9 +201,9 @@ The recommendation for Node is that we store this in a cache on disk.
 
 Both [@trevnorris](https://github.com/trevnorris) and [@indutny](https://github.com/indutny)
 believe caching is doable. Caching removes the sting of parsing and can actually
-improve performance through techniques like bytecode caching. While investigations
-are in their early stages, there appears to be plenty of room for further
-improvements and optimizations in this space.
+improve on existing performance through techniques like bytecode caching. While
+investigations are in their early stages, there is plenty of room for improvements
+and optimizations in this space.
 
 The workflow for loading files would look like:
 
