@@ -18,10 +18,6 @@
   [`modules.root`](https://github.com/dherman/defense-of-dot-js/blob/master/proposal.md#transitioning-applications-and-large-packages) /
   Document Base URI to provide a second entry point for Node versions that support
   ES modules
-* Fat packages *(packages that ship both CJS and ES codebases [name from
-  [Fat Binary](https://en.wikipedia.org/wiki/Fat_binary)])* can keep current
-  structure for legacy support and use `modules.root` to ship support for newer
-  versions
 
 ## Problem
 
@@ -51,12 +47,11 @@ variable scope of `foo` | global | local
 `arguments` object | modified | unmodified
 `this` binding of `foo` | global | `undefined`
 
-Since there is no way in source text to enforce the goal with the current
-grammar; this leads to certain constructs being undefined behavior to the
-programmer, and defined by the host environment. In turn, existing code could
-be run in the wrong goal and partially function, or function without errors but
-produce incorrect values.
-
+Since there is no way in source text to enforce the goal with the current grammar;
+this leads to the behavior of certain constructs being undefined by the programmer,
+and defined by the host environment. In turn, existing code could be run in the
+wrong goal and partially function, or function without errors but produce
+incorrect values.
 
 ## ECMA262 Solution
 
@@ -66,7 +61,7 @@ goal from being executed in the Script goal by removing the ambiguity at parse
 time.
 
 The proposal is to require that Module source text has at least one `import` or
-`export` statement in the source text to parse.
+`export` statement in the source text.
 
 ### Script Example
 
@@ -112,8 +107,7 @@ is written to run in.
 
 After much research, leading solutions have either hefty ecosystem tolls,
 ceremony, or scaffolding. They lack a way to define the intent of the source text
-from the ECMA262 standard, or allow programmers to enforce their intent at a source
-text level, like `"use strict"`.
+from the ECMA262 standard.
 
 ## Solution
 
@@ -124,8 +118,8 @@ without the possibility of the source text being run in the wrong goal.
 
 ### Algorithm
 
-Note: A host can choose either goal to parse as first, so feel free to swap the
-order of Script and Module here.
+Note: A host can choose either goal to parse first, so feel free to swap the
+order of Script and Module in the following steps.
 
 1. Bootstrap for Script
 2. Parse as Script
@@ -137,15 +131,18 @@ order of Script and Module here.
 
 ## Problem
 
-Node needs a way for people to ship both CJS and ES modules in a single package.
+Node needs a way for developers to ship both CJS and ES modules in a single package.
 
 ## Solution
 
 Adopt the idea of `"modules.root"` from
 [Defense of .js](https://github.com/dherman/defense-of-dot-js)
-*(name pending investigation)*. This would be introduced at the same time as ES
-modules. Any Node version that supports this field would change the path resolution
-upon packages to resolve relative to the path defined in this field.
+*(field name pending investigation)*. This would be introduced at the same time
+as ES modules. Any Node version that supports this field would change the path
+resolution upon packages to resolve relative to the path defined in this field.
+Much like [multiarchitecture binaries](https://en.wikipedia.org/wiki/Fat_binary),
+this enables packages to ship both CJS and ES codebases. This preserves their
+structure for legacy support and uses `modules.root` for newer Node versions.
 
 ### Example
 
@@ -206,7 +203,7 @@ Both [@trevnorris](https://github.com/trevnorris) and [@indutny](https://github.
 believe caching is doable. Caching removes the sting of parsing and can actually
 improve performance through techniques like bytecode caching. While investigations
 are in their early stages, there appears to be plenty of room for further
-improvements and optimizations.
+improvements and optimizations in this space.
 
 The workflow for loading files would look like:
 
