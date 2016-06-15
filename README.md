@@ -7,7 +7,7 @@
 
 ## TL;DR
 
-* CJS and ES modules **just work** without users juggling extensions or metadata
+* CJS and ES modules **just work** without new extensions, extra ceremony, or additional scaffolding
 * Performance is generally on par or better than existing CJS
 * Performance is significantly improvemented for ES modules over transpilation
   workflows
