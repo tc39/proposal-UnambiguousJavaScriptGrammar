@@ -11,9 +11,9 @@
   additional scaffolding
 * Performance is generally on par or better than existing CJS module loading
 * Performance is significantly improved for ES modules over transpilation workflows
-* Change JS grammars for Script and Module to be unambiguous / have no collisions
-* Determine grammar for any `.js` file by parsing as one grammar, if that fails
-  parse as the other
+* Change JS grammars for Script and Module to be unambiguous
+* Determine grammar of `.js` files by parsing as one grammar and falling back to
+  the other
 * Introduce a field to `package.json` to provide a second entry point for Node
   versions that support ES modules
 
