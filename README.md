@@ -191,6 +191,25 @@ the field begin with `node_modules/`, `./node_modules/`, `../`, or `/`
 otherwise it will throw. This is to explicitly show the intent of the field
 relative to `package.json` and reserve other prefixes for future usage.
 
+### `modules.root` mechanics
+
+`modules.root` is only applied to paths that pass through a directory containing a `package.json`, the field never is applied to absolute or relative paths. Escape of that directory is escape of the entire package, not just the directory.
+
+```js
+import 'foo/..';
+// the parent directory of the directory containing foo's package.json
+```
+
+```js
+import 'foo/node_modules/bar/baz/..';
+// equivalent to `import 'foo/node_modules/bar';`
+```
+
+```js
+import 'foo/node_modules/bar/..';
+// equivalent of `import 'foo/node_modules';`, even if bar contains a modules.root
+```
+
 ## Implementation
 
 To improve performance, host environments may want to specify a goal to parse
