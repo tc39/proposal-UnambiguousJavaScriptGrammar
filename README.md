@@ -60,8 +60,8 @@ time.
 
 The proposal is to require that Module source text has at least one `import` or
 `export` statement. This should feel natural to developers as most modules import
-dependencies and/or export APIs. Modules without imports or exports should explicitly
-specify an `export default null` to make their intentions clear.
+dependencies and/or export APIs. Modules that do not export anything should
+explicitly specify an `export default null` to make their intentions clear.
 
 ### Script Example
 
