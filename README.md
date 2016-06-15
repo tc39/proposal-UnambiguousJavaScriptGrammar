@@ -14,10 +14,8 @@
 * Change JS grammars for Script and Module to be unambiguous / have no collisions
 * Determine grammar for any `.js` file by parsing as one grammar, if that fails
   parse as the other
-* Introduce a field to `package.json` mimicing
-  [`modules.root`](https://github.com/dherman/defense-of-dot-js/blob/master/proposal.md#transitioning-applications-and-large-packages) /
-  Document Base URI to provide a second entry point for Node versions that support
-  ES modules
+* Introduce a field to `package.json` to provide a second entry point for Node
+  versions that support ES modules
 
 ## Problem
 
@@ -135,12 +133,13 @@ Node needs a way for developers to ship both CJS and ES modules in a single pack
 
 ## Solution
 
-Adopt the idea of `"modules.root"` from
-[Defense of .js](https://github.com/dherman/defense-of-dot-js)
-*(field name pending investigation)*. This would be introduced at the same time
-as ES modules. Any Node version that supports this field would change the path
-resolution upon packages to resolve relative to the path defined in this field.
-Much like [multiarchitecture binaries](https://en.wikipedia.org/wiki/Fat_binary),
+Introduce a field to `package.json` mimicing
+[`modules.root`](https://github.com/dherman/defense-of-dot-js/blob/master/proposal.md#transitioning-applications-and-large-packages) /
+Document Base URI to provide a second entry point for Node versions that support
+ES modules *(field name pending investigation)*. This would be introduced at the
+same time as ES modules. Any Node version that supports this field would change
+the path resolution upon packages to resolve relative to the path defined in this
+field. Much like [multiarchitecture binaries](https://en.wikipedia.org/wiki/Fat_binary),
 this enables packages to ship both CJS and ES codebases. This preserves their
 structure for legacy support and uses `modules.root` for newer Node versions.
 
