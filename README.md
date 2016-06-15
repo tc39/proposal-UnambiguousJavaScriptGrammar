@@ -296,8 +296,10 @@ I am also grateful for the feedback from:<br>
  * [@leobalter](https://github.com/leobalter) (TC39)
  * [@ljharb](https://github.com/ljharb) (TC39)
  * [@loganfsmyth](https://github.com/loganfsmyth) (Babel)
+ * [@mathiasbynens](https://github.com/mathiasbynens) (Lodash)
  * [@rvagg](https://github.com/rvagg) (Node)
  * [@sheerun](https://github.com/sheerun) (Bower)
+ * [@sindresorhus](https://github.com/sindresorhus) (AVA / Chalk / Yeoman)
  * [@travisleithead](https://github.com/travisleithead) (Microsoft Edge / W3C)
  * [@trevnorris](https://github.com/trevnorris) (Node)
 
