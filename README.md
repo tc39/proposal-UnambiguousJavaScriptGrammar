@@ -296,6 +296,10 @@ I am also grateful for the feedback from:<br>
  * [@loganfsmyth](https://github.com/loganfsmyth) (Babel)
  * [@sheerun](https://github.com/sheerun) (Bower)
  * [@travisleithead](https://github.com/travisleithead) (Microsoft Edge / W3C)
+ * [@trevnorris](https://github.com/trevnorris) (Node)
+ * [@indutny](https://github.com/indutny) (Node)
+ * [@rvagg](https://github.com/rvagg) (Node)
+ * [@chrisdickinson](https://github.com/chrisdickinson) (Node)
 
 Thank you! :heart:<br>
   &#8212; [@jdalton](https://github.com/jdalton)
