@@ -56,7 +56,8 @@ incorrect values.
 Require a structure in the Module goal that does not parse in the Script goal.
 Having this requirement would prevent any source text written for the Module
 goal from being executed in the Script goal by removing the ambiguity at parse
-time.
+time. This proposal is [on the agenda](https://github.com/tc39/agendas/blob/master/2016/07.md)
+for the July 2016 ECMA TC39 meeting.
 
 The proposal is to require that Module source text has at least one `import` or
 `export` statement. This should feel natural to developers as most modules import
