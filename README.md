@@ -116,8 +116,9 @@ the possibility of the source text being run in the wrong goal.
 
 ### Algorithm
 
-Note: A host can choose either goal to parse first, so feel free to swap the
-order of Script and Module in the following steps.
+Note: A host can choose either goal to parse first and, over time, may change
+their preferred order. Feel free to swap the order of Script and Module in the
+following steps.
 
 1. Bootstrap for Script
 2. Parse as Script
