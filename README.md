@@ -7,10 +7,10 @@
 
 ## TL;DR
 
-* CJS and ES modules **just work** without new extensions, extra ceremony, or additional scaffolding
+* CJS and ES modules **just work** without new extensions, extra ceremony, or
+  additional scaffolding
 * Performance is generally on par or better than existing CJS
-* Performance is significantly improvemented for ES modules over transpilation
-  workflows
+* Performance is significantly improved for ES modules over transpilation workflows
 * Change JS grammars for Script and Module to be unambiguous / have no collisions
 * Determine grammar for any `.js` file by parsing as one grammar, if that fails
   parse as the other
