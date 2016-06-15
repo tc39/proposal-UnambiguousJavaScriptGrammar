@@ -195,21 +195,36 @@ relative to `package.json` and reserve other prefixes for future usage.
 
 ### `modules.root` mechanics
 
-`modules.root` is only applied to paths that pass through a directory containing a `package.json`, the field never is applied to absolute or relative paths. Escape of that directory is escape of the entire package, not just the directory.
+`modules.root` is applied upon encountering a package via `node_modules` paths, or if the final file resolves using a `package.json`. Intermediary paths are not checked.
 
 ```js
-import 'foo/..';
-// the parent directory of the directory containing foo's package.json
+import 'foo/../..';
+// path normalizes to 'foo/../..'
+//
+// this would resolve the directory containing foo
+// however, the '../' means package.json is not used
+//
+// this would grab the package with foo in node_modules/foo
 ```
 
 ```js
 import 'foo/node_modules/bar/baz/..';
-// equivalent to `import 'foo/node_modules/bar';`
+// normalizes to 'foo/node_modules/bar'
+// approximately ~= path.resolve(
+//    './node_modules/foo',
+//    foo['modules.root'],
+//    'node_modules/bar'
+// );
+//
+// this would use foo/package.json + modules.root
+// this would use bar/package.json + modules.root
 ```
 
 ```js
-import 'foo/node_modules/bar/..';
-// equivalent of `import 'foo/node_modules';`, even if bar contains a modules.root
+import 'foo/node_modules/bar/node_modules/baz';
+// this would use foo/package.json + modules.root
+// this would not use bar/package.json , so no modules.root
+// this would use baz.package.json + modules.root
 ```
 
 ## Implementation
