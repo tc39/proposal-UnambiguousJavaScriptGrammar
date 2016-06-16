@@ -65,7 +65,7 @@ The proposal is to require that Module source text has at least one `import` or
 `export` statement. This should feel natural to developers as most modules import
 dependencies and/or export APIs. A module with only an `import` statement and no
 `export` statement is valid. However, it is our recommendation that modules are
-explicit with `export`. Modules that do not export anything should specify an
+explicit with `export`. Modules, that do not export anything, should specify an
 `export {}` to make their intentions clear and avoid accidental parse errors
 while removing `import` statements.
 
