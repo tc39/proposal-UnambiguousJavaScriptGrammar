@@ -117,11 +117,13 @@ They lack a way to define the intent of the source text from the ECMA262 standar
 ## Solution
 
 A package opts-in to the Module goal by specifying a `"module"` entry field in
-place of the traditional `"main"` field in its `package.json`. If a `package.json`
-does not exist, source text as either goal, and if there is a parse error that
-may allow the other goal to parse, then parse as the other goal. After this, the
-goal is known unambiguously and the environment can safely perform initialization
-without the possibility of the source text being run in the wrong goal.
+place of the traditional `"main"` field in its `package.json`. Package dependencies
+are not affected by the opt-in and may be a mix of CJS and ES module packages.
+If a `package.json` does not exist, parse source text as either goal. If there
+is a parse error that may allow the other goal to parse, then parse as the other
+goal. After this, the goal is known unambiguously and the environment can safely
+perform initialization without the possibility of the source text being run in
+the wrong goal.
 
 ### Algorithm
 
