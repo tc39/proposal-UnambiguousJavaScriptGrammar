@@ -125,34 +125,32 @@ without the possibility of the source text being run in the wrong goal.
 
 ### Algorithm
 
+#### Parse (Source, Goal, Throw)
+
+  The abstract operation to parse source text as a given goal.
+
+  1. Bootstrap `Source` for `Goal`
+  2. Parse `Source` as `Goal`
+  3. If Success, return `true`
+  4. If `Throw`, throw exception
+  5. Return `false`
+
+#### Operation
+
 1. If there is a `package.json` then
-
-  2. If the `package.json` has no `"main"` field and has a `"module"` field then
-
-    1. Bootstrap for Module
-    2. Parse as Module
-    3. If Success, return
-    4. Throw error
-
-  3. Else
-
-    1. Bootstrap for Script
-    2. Parse as Script
-    3. If Success, return
-    4. Throw error
+  1. If `"module"` field exists without `"main"` field
+    1. `Parse(Source, Module, true)`
+  2. Else
+    1. `Parse(Source, Script, true)`
 
 2. Else
+  1. If `Parse(Source, Script, false)` is `true`
+    1. Return
+  2. Else
+    1. `Parse(Source, Module, true)`
 
-  1. Bootstrap for Script
-  2. Parse as Script
-  3. If Success, return
-  4. Bootstrap for Module
-  5. Parse as Module
-  6. If Success, return
-  7. Throw error
-
-Note: In step 2 a host can choose either goal to parse first and, over time,
-may change their preferred order. Feel free to swap the order of Script and Module.
+  *Note: A host can choose either goal to parse first and, over time, may change
+  their preferred order. Feel free to swap the order of Script and Module.*
 
 ## Implementation
 
@@ -168,7 +166,7 @@ improve on existing performance through techniques like bytecode caching. While
 investigations are in their early stages, there is plenty of room for improvements
 and optimizations in this space.
 
-The workflow for loading files would look like:
+The workflow for loading files without a `package.json` would look like:
 
 1. Get path to load as `filename`
 2. If cache has `filename` set `goal` from cached value
