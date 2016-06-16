@@ -7,13 +7,12 @@
 
 ## TL;DR
 
+* Opt-in to ES modules with `"module"` field in `package.json`
 * CJS and ES modules **just work** without new extensions, extra ceremony, or
-  additional scaffolding
+  excessive scaffolding
 * Performance is generally on par or better than existing CJS module loading
 * Performance is significantly improved for ES modules over transpilation workflows
 * Change JS grammars for Script and Module to be unambiguous
-* Determine grammar of `.js` files by parsing as one grammar and falling back to
-  the other
 
 ## Problem
 
@@ -67,7 +66,7 @@ The proposal is to require that Module source text has at least one `import` or
 dependencies and/or export APIs. A module with only an `import` statement and no
 `export` statement is valid. However, it is our recommendation that modules are
 explicit with `export`. Modules that do not export anything should specify an
-`export {}` to make their intentions clear and avoid accidentally changing goals
+`export {}` to make their intentions clear and avoid accidental parse errors
 while removing `import` statements.
 
 ### Script Example
@@ -112,30 +111,48 @@ variable scope of `foo` | n/a | local
 Node currently requires a means for programmers to signal what goal their code
 is written to run in.
 
-After much research, leading solutions have either hefty ecosystem tolls,
-ceremony, or scaffolding. They lack a way to define the intent of the source text
-from the ECMA262 standard.
+Leading solutions have either hefty ecosystem tolls, ceremony, or scaffolding.
+They lack a way to define the intent of the source text from the ECMA262 standard.
 
 ## Solution
 
-Parse source text as either goal, and if there is a parse error that may allow
-the other goal to parse, then parse as the other goal. After this, the goal is
-known unambiguously and the environment can safely perform initialization without
-the possibility of the source text being run in the wrong goal.
+A package opts-in to the Module goal by specifying a `"module"` entry field in
+place of the traditional `"main"` field in its `package.json`. If a `package.json`
+does not exist, source text as either goal, and if there is a parse error that
+may allow the other goal to parse, then parse as the other goal. After this, the
+goal is known unambiguously and the environment can safely perform initialization
+without the possibility of the source text being run in the wrong goal.
 
 ### Algorithm
 
-Note: A host can choose either goal to parse first and, over time, may change
-their preferred order. Feel free to swap the order of Script and Module in the
-following steps.
+1. If there is a `package.json` then
 
-1. Bootstrap for Script
-2. Parse as Script
-3. If Success, return
-4. Bootstrap for Module
-5. Parse as Module
-6. If Success, return
-7. Throw error
+  2. If the `package.json` has no `"main"` field and has a `"module"` field then
+
+    1. Bootstrap for Module
+    2. Parse as Module
+    3. If Success, return
+    4. Throw error
+
+  3. Else
+
+    1. Bootstrap for Script
+    2. Parse as Script
+    3. If Success, return
+    4. Throw error
+
+2. Else
+
+  1. Bootstrap for Script
+  2. Parse as Script
+  3. If Success, return
+  4. Bootstrap for Module
+  5. Parse as Module
+  6. If Success, return
+  7. Throw error
+
+Note: In step 2 a host can choose either goal to parse first and, over time,
+may change their preferred order. Feel free to swap the order of Script and Module.
 
 ## Implementation
 
