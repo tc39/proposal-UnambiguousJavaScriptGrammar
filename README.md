@@ -276,10 +276,13 @@ about the grammar for a blob via means listed in [Implementation](#implementatio
 
 ## External Impact
 
- * Microsoft packaged web apps can benefit from unambiguous Script and Module
-   goals. At the moment there is no way to detect the intended goal of JavaScript
-   files so bytecode caches are generated for the Script goal and discarded if
-   ES modules are encountered.
+ * Microsoft packaged web applications can benefit from unambiguous Script and
+   Module goals. The bytecode cache for a packaged web application is generated
+   upon installation. When the application is running, files are loaded by script
+   tags so their intended parse goals are understood. However, bytecode cache
+   generation is done *without* running the application so the intended parse
+   goals are unknown. Because of this, the bytecode cache is generated for the
+   Script goal and ignored for ES modules.
 
 ## Special Thanks
 
