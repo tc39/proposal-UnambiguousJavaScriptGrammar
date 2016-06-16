@@ -14,8 +14,6 @@
 * Change JS grammars for Script and Module to be unambiguous
 * Determine grammar of `.js` files by parsing as one grammar and falling back to
   the other
-* Introduce a field to `package.json` to provide a second entry point for Node
-  versions that support ES modules
 
 ## Problem
 
@@ -133,103 +131,6 @@ following steps.
 5. Parse as Module
 6. If Success, return
 7. Throw error
-
-## Problem
-
-Node needs a way for developers to ship both CJS and ES modules in a single package.
-
-## Solution
-
-Introduce a field to `package.json` mimicing
-[`modules.root`](https://github.com/dherman/defense-of-dot-js/blob/master/proposal.md#transitioning-applications-and-large-packages) /
-Document Base URI to provide a second entry point for Node versions that support
-ES modules *(field name pending investigation)*. This would be introduced at the
-same time as ES modules. Any Node version that supports this field would change
-the path resolution upon packages to resolve relative to the path defined in this
-field. Much like [multiarchitecture binaries](https://en.wikipedia.org/wiki/Fat_binary),
-this enables packages to ship both CJS and ES codebases. This preserves their
-structure for legacy support and uses `modules.root` for newer Node versions.
-
-### Example
-
-Given a directory structure of:
-
-```
-myapp
-\- package.json
-\- dist
-  \- app.js # ES
-\ app.js # CJS
-```
-
-And `package.json` containing:
-
-```json
-{
-  "modules.root": "./dist",
-  "main": "app.js"
-}
-```
-
-```js
-require('myapp');
-// Load dist/app.js if Node supports ES modules
-// Load app.js if Node supports only CJS modules
-```
-
-### Side effects of field
-
-In the above example scenario:
-
-```js
-require('myapp/package.json');
-// Fail to load if Node supports ES modules
-// Load package.json if Node supports only CJS modules
-```
-
-This has the benefit of allowing packages, like `react`, to access internal
-modules without exposing them to package consumers.
-
-### Validation of field
-
-The field must not be the values `node_modules`, or `./node_modules`; nor may
-the field begin with `node_modules/`, `./node_modules/`, `../`, or `/`
-otherwise it will throw. This is to explicitly show the intent of the field
-relative to `package.json` and reserve other prefixes for future usage.
-
-### `modules.root` mechanics
-
-`modules.root` is applied upon encountering a package via `node_modules` paths, or if the final file resolves using a `package.json`. Intermediary paths are not checked.
-
-```js
-import 'foo/../..';
-// Path normalizes to 'foo/../..'.
-//
-// This would resolve the directory containing the path of `foo` *without*
-// realpathing. However, the '../' means `package.json` is not used.
-//
-// Given `abc/node_modules/foo` then `import 'foo/../..';` would get `abc`.
-```
-
-```js
-import 'foo/node_modules/bar/baz/..';
-// Normalizes to 'foo/node_modules/bar'
-// Approximately ~= path.resolve(
-//   './node_modules/foo',
-//   foo['modules.root'],
-//   'node_modules/bar'
-// );
-//
-// This would use `foo/package.json` + `modules.root`.
-// This would use `bar/package.json` + `modules.root`.
-```
-
-```js
-import 'foo/node_modules/bar/node_modules/baz';
-// This would use `foo/package.json` + `modules.root`.
-// This would not use `bar/package.json`, so no `modules.root`.
-// This would use `baz.package.json` + `modules.root`.
-```
 
 ## Implementation
 
