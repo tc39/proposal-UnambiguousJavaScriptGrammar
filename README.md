@@ -161,7 +161,7 @@ To improve performance, host environments may want to specify a goal to parse
 first. This could take several forms:<br>
 a command line flag, a manifest file, HTTP header, file extension, etc.
 
-The recommendation for Node is that we store this in a cache on disk.
+The recommendation for Node is to store this in a cache on disk.
 
 Both [@trevnorris](https://github.com/trevnorris) and [@indutny](https://github.com/indutny)
 believe caching is doable. Caching removes the sting of parsing and can actually
@@ -169,7 +169,7 @@ improve on existing performance through techniques like bytecode caching. While
 investigations are in their early stages, there is plenty of room for improvements
 and optimizations in this space.
 
-The workflow for loading files by multiple parse could look like:
+The workflow for loading files could look like:
 
 1. Get path to load as `filename`.
 2. If cache has `filename`, then
