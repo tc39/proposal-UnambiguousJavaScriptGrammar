@@ -68,6 +68,9 @@ are explicit with `export`. Modules, that do not export anything, should specify
 an `export {}` to make their intentions clear and avoid accidental parse errors
 while removing `import` declaration.
 
+*Note: The `export {}` is not new syntax and does not export an empty object.
+ It is the standard ES2015 way to specify exporting nothing.*
+
 ### Script Example
 
 ```js
