@@ -195,7 +195,7 @@ The workflow for loading files could look like:
 Some tools, outside of Node, may not have access to a JS parser *(Bash programs,
 some asset pipelines, etc.)*. These tools generally operate on files as opaque blobs /
 plain text files and can use the noted methods, listed under [Implementation](#implementation),
-to get information about the grammar of them.
+to get information about file grammar.
 
 ## External Impact
 
