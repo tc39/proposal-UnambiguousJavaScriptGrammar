@@ -7,7 +7,6 @@
 
 ## TL;DR
 
-* Opt-in to ES modules with `"module"` field in `package.json`
 * CJS and ES modules **just work** without new extensions, extra ceremony, or
   excessive scaffolding
 * Performance is generally on par or better than existing CJS module loading
@@ -116,34 +115,31 @@ They lack a way to define the intent of the source text from the ECMA262 standar
 
 ## Solution
 
-A package opts-in to the Module goal by specifying a `"module"` entry field in
-place of the traditional `"main"` field in its `package.json`. Package dependencies
-are not affected by the opt-in and may be a mix of CJS and ES module packages. If
-a `package.json` does not contain a `"main"` or `"module"` field, or a `package.json`
-does not exist, then parse source text as either goal. If there is a parse error
-that may allow the other goal to parse, then parse as the other goal. After this,
-the goal is known unambiguously and the environment can safely perform initialization
-without the possibility of the source text being run in the wrong goal.
+A package opts-in to the Module goal by specifying `"module"` as the parse `"goal"`
+field in its `package.json`. Package dependencies are not affected by the opt-in
+and may be a mix of CJS and ES module packages. If a parse goal is not specified,
+then parse source text as either goal. If there is a parse error that may allow
+the other goal to parse, then parse as the other goal. After this, the goal is
+known unambiguously and the environment can safely perform initialization without
+the possibility of the source text being run in the wrong goal.
 
 ### Algorithm
 
-#### Parse (Source, Goal, Throw)
+#### Parse (source, goal, throws)
 
   The abstract operation to parse source text as a given goal.
 
-  1. Bootstrap `Source` for `Goal`.
-  2. Parse `Source` as `Goal`.
-  3. If Success, return `true`.
-  4. If `Throw`, throw exception.
+  1. Bootstrap `source` for `goal`.
+  2. Parse `source` as `goal`.
+  3. If success, return `true`.
+  4. If `throws`, throw exception.
   5. Return `false`.
 
 #### Operation
 
-1. If there is a `package.json`, then
-  1. If `"module"` field exists without `"main"` field, then
-    1. Call `Parse(Source, Module, true)` and return.
-  2. Else if `"main"` field exists, then
-    1. Call `Parse(Source, Script, true)` and return.
+1. If a package parse goal is specified, then
+  1. Let `goal` be the resolved parse goal.
+  2. Call `Parse(source, goal, true)` and return.
 
 2. Fallback to multiple parse.
   1. If `Parse(Source, Script, false)` is `true`, then
