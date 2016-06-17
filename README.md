@@ -118,12 +118,12 @@ They lack a way to define the intent of the source text from the ECMA262 standar
 
 A package opts-in to the Module goal by specifying a `"module"` entry field in
 place of the traditional `"main"` field in its `package.json`. Package dependencies
-are not affected by the opt-in and may be a mix of CJS and ES module packages.
-If a `package.json` does not exist, parse source text as either goal. If there
-is a parse error that may allow the other goal to parse, then parse as the other
-goal. After this, the goal is known unambiguously and the environment can safely
-perform initialization without the possibility of the source text being run in
-the wrong goal.
+are not affected by the opt-in and may be a mix of CJS and ES module packages. If
+a `package.json` does not contain a `"main"` or `"module"` field, or a `package.json`
+does not exist, then parse source text as either goal. If there is a parse error
+that may allow the other goal to parse, then parse as the other goal. After this,
+the goal is known unambiguously and the environment can safely perform initialization
+without the possibility of the source text being run in the wrong goal.
 
 ### Algorithm
 
@@ -131,25 +131,25 @@ the wrong goal.
 
   The abstract operation to parse source text as a given goal.
 
-  1. Bootstrap `Source` for `Goal`
-  2. Parse `Source` as `Goal`
-  3. If Success, return `true`
-  4. If `Throw`, throw exception
-  5. Return `false`
+  1. Bootstrap `Source` for `Goal`.
+  2. Parse `Source` as `Goal`.
+  3. If Success, return `true`.
+  4. If `Throw`, throw exception.
+  5. Return `false`.
 
 #### Operation
 
-1. If there is a `package.json` then
-  1. If `"module"` field exists without `"main"` field
-    1. `Parse(Source, Module, true)`
-  2. Else
-    1. `Parse(Source, Script, true)`
+1. If there is a `package.json`, then
+  1. If `"module"` field exists without `"main"` field, then
+    1. Call `Parse(Source, Module, true)` and return.
+  2. Else if `"main"` field exists, then
+    1. Call `Parse(Source, Script, true)` and return.
 
-2. Else
-  1. If `Parse(Source, Script, false)` is `true`
-    1. Return
+2. Fallback to dual parsing.
+  1. If `Parse(Source, Script, false)` is `true`, then
+    1. Return.
   2. Else
-    1. `Parse(Source, Module, true)`
+    1. Call `Parse(Source, Module, true)`.
 
   *Note: A host can choose either goal to parse first and, over time, may change
   their preferred order. Feel free to swap the order of Script and Module.*
@@ -168,7 +168,7 @@ improve on existing performance through techniques like bytecode caching. While
 investigations are in their early stages, there is plenty of room for improvements
 and optimizations in this space.
 
-The workflow for loading files without a `package.json` would look like:
+The workflow for loading files by dual parsing would look like:
 
 1. Get path to load as `filename`
 2. If cache has `filename` set `goal` from cached value
