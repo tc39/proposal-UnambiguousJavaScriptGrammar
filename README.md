@@ -147,8 +147,9 @@ without the possibility of the source text being run in the wrong goal.
   2. Else
     1. Call `Parse(Source, Module, true)`.
 
-  *Note: A host can choose either goal to parse first and, over time, may change
-  their preferred order. Feel free to swap the order of Script and Module.*
+  *Note: A host can choose either goal to parse first and may change their order
+  over time or as new parse goals are added. Feel free to swap the order of Script
+  and Module.*
 
 ## Implementation
 
