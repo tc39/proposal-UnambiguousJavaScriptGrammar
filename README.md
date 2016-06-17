@@ -18,7 +18,7 @@
 
 The Script and Module goal of ECMA262 have a grammatical ambiguity where some
 code can run in both goals, having the exact same source, but produce different
-values. Unlike `"use strict"`, the signal to have a specific behavior is not in
+results. Unlike `"use strict"`, the signal to have a specific behavior is not in
 the code, thus the code has a multitude of possible effects which are not
 controlled by the programmer.
 
@@ -46,7 +46,7 @@ Since there is no way in source text to enforce the goal with the current gramma
 this leads to the behavior of certain constructs being undefined by the programmer,
 and defined by the host environment. In turn, existing code could be run in the
 wrong goal and partially function, or function without errors but produce
-incorrect values.
+incorrect results.
 
 ## ECMA262 Solution
 
