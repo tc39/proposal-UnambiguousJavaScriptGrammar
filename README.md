@@ -12,6 +12,7 @@
 * Performance is generally on par or better than existing CJS module loading
 * Performance is significantly improved for ES modules over transpilation workflows
 * Change JS grammars for Script and Module to be unambiguous
+* Determine grammar of `.js` files by parsing as one grammar and falling back to the other
 
 ## Problem
 
