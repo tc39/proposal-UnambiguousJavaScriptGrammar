@@ -68,6 +68,10 @@ explicit with `export`. Modules, that do not export anything, should specify an
 `export {}` to make their intentions clear and avoid accidental parse errors
 while removing `import` statements.
 
+Note that `export {}` does not export an empty object, it exports an empty module.
+The syntax is `export { variable1 as name1, variable2 as name2 }`, which is a list
+of bindings, not an object declaration. See [MDN documentation](https://developer.mozilla.org/en/docs/web/javascript/reference/statements/export) and [discussion](https://github.com/bmeck/UnambiguousJavaScriptGrammar/issues/7) for more info.
+
 ### Script Example
 
 ```js
