@@ -192,8 +192,8 @@ The workflow for loading files by multiple parse could look like:
 
 ## Tooling concerns
 
-Some situations outside of Node do not have a JS parser (Bash programs, some
-asset pipelines, etc.). These tools generally operate on files as opaque blobs,
+Some tools, outside of Node, may not have access to a JS parser (Bash programs,
+some asset pipelines, etc.). These tools generally operate on files as opaque blobs,
 or plain text files. These tools can use the noted methods to get information
 about the grammar for a blob via means listed in [Implementation](#implementation).
 
