@@ -145,7 +145,7 @@ without the possibility of the source text being run in the wrong goal.
   2. Else if `"main"` field exists, then
     1. Call `Parse(Source, Script, true)` and return.
 
-2. Fallback to dual parsing.
+2. Fallback to multiple parse.
   1. If `Parse(Source, Script, false)` is `true`, then
     1. Return.
   2. Else
@@ -168,7 +168,7 @@ improve on existing performance through techniques like bytecode caching. While
 investigations are in their early stages, there is plenty of room for improvements
 and optimizations in this space.
 
-The workflow for loading files by dual parsing would look like:
+The workflow for loading files by multiple parse would look like:
 
 1. Get path to load as `filename`
 2. If cache has `filename` set `goal` from cached value
