@@ -63,7 +63,7 @@ the July 2016 ECMA TC39 meeting.
 
 The proposal is to require that Module source text has at least one `import` or
 `export` declaration. This should feel natural to developers as most modules import
-dependencies and/or export APIs. A module with only an `import` declaration and
+dependencies and or export APIs. A module with only an `import` declaration and
 no `export` declaration is valid. However, it is our recommendation that modules
 are explicit with `export`. Modules, that do not export anything, should specify
 an `export {}` to make their intentions clear and avoid accidental parse errors
