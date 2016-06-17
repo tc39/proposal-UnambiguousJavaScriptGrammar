@@ -168,7 +168,7 @@ improve on existing performance through techniques like bytecode caching. While
 investigations are in their early stages, there is plenty of room for improvements
 and optimizations in this space.
 
-The workflow for loading files by multiple parse would look like:
+The workflow for loading files by multiple parse could look like:
 
 1. Get path to load as `filename`
 2. If cache has `filename` set `goal` from cached value
