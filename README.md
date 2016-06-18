@@ -214,7 +214,7 @@ and collaboration of<br>
 [@bmeck](https://github.com/bmeck), [@dherman](https://github.com/dherman),
 and [@wycats](https://github.com/wycats).
 
-I am also grateful for the feedback from:<br>
+I am also grateful for feedback from:<br>
  * [@AtOMiCNebula](https://github.com/AtOMiCNebula) (Microsoft Edge)
  * [@brendaneich](https://github.com/brendaneich) (TC39)
  * [@bterlson](https://github.com/bterlson) (Microsoft Chakra / TC39)
