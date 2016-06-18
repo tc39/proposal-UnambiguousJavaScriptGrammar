@@ -221,7 +221,6 @@ I am also grateful for the feedback from:<br>
  * [@chrisdickinson](https://github.com/chrisdickinson) (Node)
  * [@hzoo](https://github.com/hzoo) (Babel)
  * [@indutny](https://github.com/indutny) (Node)
- * [@josh](https://github.com/josh) (Github / Sprockets)
  * [@leobalter](https://github.com/leobalter) (jQuery Foundation / TC39)
  * [@ljharb](https://github.com/ljharb) (TC39)
  * [@loganfsmyth](https://github.com/loganfsmyth) (Babel)
