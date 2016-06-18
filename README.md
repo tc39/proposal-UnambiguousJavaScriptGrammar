@@ -199,6 +199,10 @@ to get information about file grammar.
 
 ## External Impact
 
+ * Facebook Flow performs a [series of inferences](https://github.com/facebook/flow/blob/v0.27.0/src/typing/import_export.ml#L99-L120)
+   to detect CJS and ES modules. Unambiguous Script and Module goals would improve
+   its ability to determine module types.
+
  * Microsoft packaged web applications can benefit from unambiguous Script and
    Module goals. The bytecode cache for a packaged web application is generated
    upon installation. When the application is running, files are loaded by script
