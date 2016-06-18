@@ -218,7 +218,10 @@ and collaboration of<br>
 [@bmeck](https://github.com/bmeck), [@dherman](https://github.com/dherman),
 and [@wycats](https://github.com/wycats).
 
-I am also grateful for feedback from:<br>
+While iterating on this proposal we have reached out to several people from areas
+affected by it.<br>
+Although opinions on this proposal are varied, I am grateful for
+feedback from:<br>
  * [@AtOMiCNebula](https://github.com/AtOMiCNebula) (Microsoft Edge)
  * [@brendaneich](https://github.com/brendaneich) (TC39)
  * [@bterlson](https://github.com/bterlson) (Microsoft Chakra / TC39)
