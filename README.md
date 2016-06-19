@@ -203,6 +203,10 @@ to get information about file grammar.
    to detect CJS and ES modules. Unambiguous Script and Module goals would improve
    its ability to determine module types.
 
+ * Linters, like [xo](https://github.com/sindresorhus/xo), could use unambiguous
+   Script and Module goals to enable module specific linting rules without extra
+   configuration.
+
  * Microsoft packaged web applications can benefit from unambiguous Script and
    Module goals. The bytecode cache for a packaged web application is generated
    upon installation. When the application is running, files are loaded by script
