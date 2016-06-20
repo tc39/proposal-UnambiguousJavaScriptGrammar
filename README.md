@@ -22,6 +22,9 @@ results. Unlike `"use strict"`, the signal to have a specific behavior is not in
 the code, thus the code has a multitude of possible effects which are not
 controlled by the programmer.
 
+<em>Note: The following example highlights a few of the effects of ambiguous
+source text and is by no means exhaustive.</em>
+
 ### Example
 
 ```js
@@ -69,8 +72,8 @@ are explicit with `export`. Modules, that do not export anything, should specify
 an `export {}` to make their intentions clear and avoid accidental parse errors
 while removing `import` declarations.
 
-<em>Note: The `export {}` is **not** new syntax and does **not** export an empty object.
- It is the standard ES2015 way to specify exporting nothing.</em>
+<em>Note: The `export {}` is **not** new syntax and does **not** export an empty
+object. It is the standard ES2015 way to specify exporting nothing.</em>
 
 ### Script Example
 
