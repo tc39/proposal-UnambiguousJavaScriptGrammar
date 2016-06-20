@@ -182,13 +182,13 @@ The workflow for loading files could look like:
 3. Else
   1. Set `goal` to a preferred goal (Script for now since most modules are CJS)
 4. Load file for `filename` as `source`.
-5. Bootstrap source for `goal` as `bootstrapped_source`.
+5. Bootstrap `source` for `goal` as `bootstrapped_source`.
 5. Parse `bootstrapped_source` using `goal` grammar.
 6. If success, then
   1. Cache and return results.
 7. Else
   1. Change `goal` to opposite grammar.
-8. Bootstrap source for `goal` as `bootstrapped_source`.
+8. Bootstrap `source` for `goal` as `bootstrapped_source`.
 9. Parse `bootstrapped_source` using `goal` grammar.
 10. If success, cache and return results.
 11. Throw error.
