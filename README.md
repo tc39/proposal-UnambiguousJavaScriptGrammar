@@ -17,13 +17,13 @@
 ## Problem
 
 The Script and Module goal of ECMA262 have a grammatical ambiguity where some
-code can run in both goals, having the exact same source, but produce different
-results. Unlike `"use strict"`, the signal to have a specific behavior is not in
-the code, thus the code has a multitude of possible effects which are not
-controlled by the programmer.
+code can run in both goals, having the exact same source text, but produce
+different results. Unlike `"use strict"`, the signal to have a specific behavior
+is not in the code, thus the code has a multitude of possible effects which are
+not controlled by the programmer.
 
 <em>Note: The following example highlights a few of the effects of ambiguous
-source text and is by no means exhaustive.</em>
+grammar and is by no means exhaustive.</em>
 
 ### Example
 
