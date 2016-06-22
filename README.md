@@ -53,7 +53,7 @@ incorrect results.
 
 ## ECMA262 Solution
 
-Require a structure in the Module goal that does not parse in the Script goal.
+Require a structure in the Module goal that does not parse as the Script goal.
 Having this requirement would prevent any source text written for the Module
 goal from being executed in the Script goal by removing the ambiguity at parse
 time.
@@ -203,17 +203,17 @@ to get information about file grammar.
 ## External Examples and Impact
 
  * Esprima relies on a `--module` flag to signal the Module goal. However, this
-   has proven to be unintuitive to many users. Unambiguous Script and Module goals
-   would enable things to “just work” without extra flags or configuration.
+   has proven to be unintuitive for many users. Unambiguous Script and Module
+   goals would enable things to “just work” without flags.
 
  * Facebook Flow performs a series of inferences to detect CJS and ES modules.
    Unambiguous Script and Module goals would improve its ability to determine
    module types.
 
  * JSCS double parses, first as the Script goal, then as the Module goal. With
-   unambiguous Script and Module goals the could parse as module first. JSCS also
-   accepts input through stdin so identification of goals through source text is
-   ideal.
+   unambiguous Script and Module goals it could parse as the Module goal first.
+   JSCS also accepts input through stdin, so identification of goals through
+   source text is ideal.
 
  * Linters, like `xo`, could use unambiguous Script and Module goals to enable
    module specific linting rules without extra configuration.
@@ -228,7 +228,7 @@ to get information about file grammar.
 
  * TypeScript has taken the stance from early on that a script becomes a module
    when it has at least one `import` or `export` declaration. Over the years they
-   have experienced very few user issues with this.
+   have experienced very few user issues with this approach.
 
 ## Special Thanks
 
