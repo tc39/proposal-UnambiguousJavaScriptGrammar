@@ -9,7 +9,7 @@
 
 * CJS and ES modules **just work** without new extensions, extra ceremony, or
   excessive scaffolding
-* Performance is generally on par or better than existing CJS module loading
+* Performance is generally on par with existing CJS module loading
 * Performance is significantly improved for ES modules over transpilation workflows
 * Change JS grammars for Script and Module to be unambiguous
 * Determine grammar of `.js` files by parsing as one grammar and falling back to others
@@ -162,36 +162,7 @@ without the possibility of the source text being run in the wrong goal.
 
 To improve performance, host environments may want to specify a goal to parse
 first. This could take several forms:<br>
-a command line flag, a manifest file, HTTP header, file extension, etc.
-
-The recommendation for Node is to store this in a cache on disk.
-
-Both [@trevnorris](https://github.com/trevnorris) and [@indutny](https://github.com/indutny)
-believe caching is doable. Caching removes the sting of parsing and can actually
-improve on existing performance through techniques like bytecode caching. While
-investigations are in their early stages, there is plenty of room for improvements
-and optimizations in this space.
-
-The workflow for loading files could look like:
-
-1. Get path to load as `filename`.
-2. If cache has `filename`, then
-  1. Set `goal` from cached value.
-  2. Validate cache against file for `filename`.
-  3. If valid, return cache.
-3. Else
-  1. Set `goal` to a preferred goal (Script for now since most modules are CJS)
-4. Load file for `filename` as `source`.
-5. Bootstrap `source` for `goal` as `bootstrapped_source`.
-5. Parse `bootstrapped_source` using `goal` grammar.
-6. If success, then
-  1. Cache and return results.
-7. Else
-  1. Change `goal` to opposite grammar.
-8. Bootstrap `source` for `goal` as `bootstrapped_source`.
-9. Parse `bootstrapped_source` using `goal` grammar.
-10. If success, cache and return results.
-11. Throw error.
+cache on disk, a command line flag, a manifest file, HTTP header, file extension, etc.
 
 ## Tooling concerns
 
