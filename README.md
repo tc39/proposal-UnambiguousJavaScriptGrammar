@@ -215,7 +215,7 @@ to get information about file grammar.
    JSCS also accepts input through stdin, so identification of goals through
    source text is ideal.
 
- * Linters, like `xo`, could use unambiguous Script and Module goals to enable
+ * Linters, like xo, could use unambiguous Script and Module goals to enable
    module specific linting rules without extra configuration.
 
  * Microsoft packaged web applications can benefit from unambiguous Script and
