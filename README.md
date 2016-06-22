@@ -14,6 +14,11 @@
 * Change JS grammars for Script and Module to be unambiguous
 * Determine grammar of `.js` files by parsing as one grammar and falling back to others
 
+<em>Note: This proposal would replace
+[section 5.1](https://github.com/nodejs/node-eps/blob/master/002-es6-modules.md#51-determining-if-source-is-an-es-module)
+of the Node [ES6 Module Interoperability](https://github.com/nodejs/node-eps/blob/master/002-es6-modules.md)
+proposal.</em>
+
 ## Problem
 
 The Script and Module goal of ECMA262 have a grammatical ambiguity where some
