@@ -60,9 +60,10 @@ time.
 
 While the ES2015 specification
 [does not forbid](http://www.ecma-international.org/ecma-262/6.0/#sec-forbidden-extensions)
-this extension, Node wants to avoid further ecosystem fragmentation. This proposal
+this extension, Node wants to avoid acting as a rogue agent. This proposal
 is [on the agenda](https://github.com/tc39/agendas/blob/master/2016/07.md) for
-the July 2016 ECMA TC39 meeting.
+the July 2016 ECMA TC39 meeting for further discussion. A specification change
+or at least an official endorsement of this proposal for Node would be welcomed.
 
 The proposal is to require that Module source text has at least one `import` or
 `export` declaration. This should feel natural to developers as most modules import
