@@ -206,18 +206,17 @@ to get information about file grammar.
    has proven to be unintuitive to many users. Unambiguous Script and Module goals
    would enable things to “just work” without extra flags or configuration.
 
- * Facebook Flow performs a [series of inferences](https://github.com/facebook/flow/blob/v0.27.0/src/typing/import_export.ml#L99-L120)
-   to detect CJS and ES modules. Unambiguous Script and Module goals would improve
-   its ability to determine module types.
+ * Facebook Flow performs a series of inferences to detect CJS and ES modules.
+   Unambiguous Script and Module goals would improve its ability to determine
+   module types.
 
  * JSCS double parses, first as the Script goal, then as the Module goal. With
    unambiguous Script and Module goals the could parse as module first. JSCS also
    accepts input through stdin so identification of goals through source text is
    ideal.
 
- * Linters, like [xo](https://github.com/sindresorhus/xo), could use unambiguous
-   Script and Module goals to enable module specific linting rules without extra
-   configuration.
+ * Linters, like `xo`, could use unambiguous Script and Module goals to enable
+   module specific linting rules without extra configuration.
 
  * Microsoft packaged web applications can benefit from unambiguous Script and
    Module goals. The bytecode cache for a packaged web application is generated
