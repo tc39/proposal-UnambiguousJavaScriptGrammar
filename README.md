@@ -167,15 +167,15 @@ without the possibility of the source text being run in the wrong goal.
 ## Implementation
 
 To improve performance, host environments may want to specify a goal to parse
-first. This could take several forms:<br>
+first. This could be done in several ways:<br>
 cache on disk, a command line flag, a manifest file, HTTP header, file extension, etc.
 
-## Tooling concerns
+## Tooling Concerns
 
 Some tools, outside of Node, may not have access to a JS parser *(Bash programs,
-some asset pipelines, etc.)*. These tools generally operate on files as opaque blobs /
-plain text files and can use the noted methods, listed under [Implementation](#implementation),
-to get information about file grammar.
+some asset pipelines, etc.)*. These tools generally operate on files as opaque
+blobs / plain text files and can use the techniques, listed under
+[Implementation](#implementation), to get parse goal information.
 
 ## External Examples and Impact
 
