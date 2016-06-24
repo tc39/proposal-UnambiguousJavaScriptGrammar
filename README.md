@@ -187,9 +187,7 @@ blobs / plain text files and can use the techniques, listed under
    Unambiguous Script and Module goals would improve its ability to determine
    module types.
 
- * JSCS double parses, first as the Script goal, then as the Module goal. With
-   unambiguous Script and Module goals it could parse as the Module goal first.
-   JSCS also accepts input through stdin, so identification of goals through
+ * JSCS can accept input through stdin, so identification of parse goals by
    source text is ideal.
 
  * Linters, like xo, could use unambiguous Script and Module goals to enable
