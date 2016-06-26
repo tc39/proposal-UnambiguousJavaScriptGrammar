@@ -168,7 +168,7 @@ source text being run in the wrong goal.
 ## Implementation
 
 To improve performance, host environments may want to specify a goal to parse
-first. This could be done in several ways:<br>
+first. This can be done in several ways:<br>
 cache on disk, a command line flag, a manifest file, HTTP header, file extension, etc.
 
 ## Tooling Concerns
