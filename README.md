@@ -58,28 +58,20 @@ incorrect results.
 
 ## ECMA262 Solution
 
-Require a structure in the Module goal that does not parse as the Script goal.
-Having this requirement would prevent any source text written for the Module
-goal from being executed in the Script goal by removing the ambiguity at parse
-time.
+Require that Module source text has at least one `import` or `export` declaration.
+A module with only an `import` declaration and no `export` declaration is valid.
+Modules, that do not export anything, should specify an `export {}` to make
+intentions clear and avoid accidental parse errors while removing `import`
+declarations. The `export {}` is **not** new syntax and does **not** export an
+empty object. It is simply the standard way to specify exporting nothing.
 
-While the ES2015 specification
+<em>Note: While the ES2015 specification
 [does not forbid](http://www.ecma-international.org/ecma-262/6.0/#sec-forbidden-extensions)
 this extension, Node wants to avoid acting as a rogue agent. Node has a TC39
 representative, [@bmeck](https://github.com/bmeck), to champion this proposal.
 A specification change or at least an official endorsement of this Node proposal
-would be welcomed.
-
-The proposal is to require that Module source text has at least one `import` or
-`export` declaration. This should feel natural to developers as most modules import
-dependencies and or export APIs. A module with only an `import` declaration and
-no `export` declaration is valid. However, it is our recommendation that modules
-are explicit with `export`. Modules, that do not export anything, should specify
-an `export {}` to make their intentions clear and avoid accidental parse errors
-while removing `import` declarations.
-
-<em>Note: The `export {}` is **not** new syntax and does **not** export an empty
-object. It is the standard ES2015 way to specify exporting nothing.</em>
+would be welcomed. If a resolution is not possible, this proposal will fallback
+to the previous [`.mjs` file extension proposal](https://github.com/nodejs/node-eps/blob/5dae5a537c2d56fbaf23aaf2ae9da15e74474021/002-es6-modules.md#51-determining-if-source-is-an-es-module).</em>
 
 ### Script Example
 
