@@ -148,7 +148,7 @@ goal.
   1. Let `goal` be the resolved parse goal.
   2. Call `Parse(source, goal, true)` and return.
 
-2. Fallback to multiple parse.
+2. Else fallback to multiple parse.
   1. If `Parse(Source, Script, false)` is `true`, then
     1. Return.
   2. Else
