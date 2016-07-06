@@ -5,6 +5,13 @@
 | Authors | [@jdalton](https://github.com/jdalton)  [@bmeck](https://github.com/bmeck) |
 | Date | June 14, 2016 |
 
+## Proposal Accepted!
+
+On July 6, 2016 this proposal was accepted as
+[section 5.1](https://github.com/nodejs/node-eps/blob/master/002-es6-modules.md#51-determining-if-source-is-an-es-module)
+of the Node [ES6 Module Interoperability](https://github.com/nodejs/node-eps/blob/master/002-es6-modules.md)
+draft proposal :bangbang:
+
 ## TL;DR
 
 * CJS and ES modules **just work** without new extensions, extra ceremony, or
@@ -13,11 +20,6 @@
 * Performance is significantly improved for ES modules over transpilation workflows
 * Change JS grammars for Script and Module to be unambiguous
 * Determine grammar of `.js` files by parsing as one grammar and falling back to others
-
-<em>Note: This proposal would replace
-[section 5.1](https://github.com/nodejs/node-eps/blob/master/002-es6-modules.md#51-determining-if-source-is-an-es-module)
-of the Node [ES6 Module Interoperability](https://github.com/nodejs/node-eps/blob/master/002-es6-modules.md)
-proposal.</em>
 
 ## Problem
 
