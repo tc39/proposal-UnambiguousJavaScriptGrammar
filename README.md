@@ -106,11 +106,11 @@ foo(null);
 export {};
 ```
 
- | script (cannot parse) | module
---- | --- | --- | ---
-variable scope of `foo` | n/a | local
-`arguments` object | n/a | unmodified
-`this` binding of `foo` | n/a | undefined
+|                         | script (cannot parse) | module     |
+| ----------------------- | --------------------- | -----------|
+| variable scope of `foo` | n/a                   | local      |
+| `arguments` object      | n/a                   | unmodified |
+| `this` binding of `foo` | n/a                   | undefined  |
 
 ## Problem
 
