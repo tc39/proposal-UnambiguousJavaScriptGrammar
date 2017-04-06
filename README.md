@@ -46,11 +46,11 @@ foo(null);
 
 Differences:
 
- | script | module
---- | --- | --- | ---
-variable scope of `foo` | global | local
-`arguments` object | modified | unmodified
-`this` binding of `foo` | global | `undefined`
+|                         | script   | module      |
+| ----------------------- | -------- | ----------- |
+| variable scope of `foo` | global   | local       |
+| `arguments` object      | modified | unmodified  |
+| `this` binding of `foo` | global   | `undefined` |
 
 Since there is no way in source text to enforce the goal with the current grammar;
 this leads to the behavior of certain constructs being undefined by the programmer,
@@ -87,11 +87,11 @@ function foo(value) {
 foo(null);
 ```
 
- | script | module (cannot parse)
---- | --- | --- | ---
-variable scope of `foo` | global | n/a
-`arguments` object | modified | n/a
-`this` binding of `foo` | global | n/a
+|                         | script   | module (cannot parse) |
+| ----------------------- | -------- | --------------------- |
+| variable scope of `foo` | global   | n/a                   |
+| `arguments` object      | modified | n/a                   |
+| `this` binding of `foo` | global   | n/a                   |
 
 ### Module Example
 
